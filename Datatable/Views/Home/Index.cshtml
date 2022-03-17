@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<div class="table-responsive">
+    <br />
+<table id="TableStudents">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Class</th>
+        </tr>
+    </thead>
+</table>
+    </div>
+@section Scripts{
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#TableStudents").dataTable({
+                "bServerSide": true, //Hcaer que el porcedimiento del lado del servidor sea verdadero
+                "sAjaxSource": '/Home/GetData', //Pagina y nombre por lo cual se va aetsar buscando el metodo de buscar
+                "sAjaxDataProp": "aaData", // propiedad de datos del ajax devuelto que contiene datos de tabla
+                "bProcessing": true,
+                "bLengthChange": true,
+                "sPaginationType": "full_numbers",//pagination type-tipo de paginacion
+                "aoColumns": [
+
+                    { "mData": "Name" },
+                    { "mData": "Email" },
+                    { "mData": "Class" }
+
+                ]
+            });
+        });
+    </script>
+    }
+
+
+
+
+
